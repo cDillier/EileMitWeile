@@ -15,12 +15,12 @@ using System.Windows.Shapes;
 
 namespace EileMitWeile.View
 {
-    /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
+	/// <summary>
+	/// Interaktionslogik für EileMitWeileMainView.xaml
+	/// </summary>
+	public partial class EileMitWeileMainView : Catel.Windows.DataWindow
+	{
+        public EileMitWeileMainView()
         {
             InitializeComponent();
         }
