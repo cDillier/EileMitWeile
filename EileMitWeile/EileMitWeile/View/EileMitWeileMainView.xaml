@@ -6,8 +6,310 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EileMitWeile"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Name="MainWindow" Height="450" Width="614.706">
+    <catel:DataWindow.Resources>
+        <Style x:Key="RedField" TargetType="StackPanel">
+            <Setter Property="Background" Value="Red"/>
+        </Style>
+        <Style x:Key="GreenField" TargetType="StackPanel">
+            <Setter Property="Background" Value="Green"/>
+        </Style>
+        <Style x:Key="BlueField" TargetType="StackPanel">
+            <Setter Property="Background" Value="Blue"/>
+        </Style>
+        <Style x:Key="YellowField" TargetType="StackPanel">
+            <Setter Property="Background" Value="Yellow"/>
+        </Style>
+        <Style x:Key="SaveZoneField" TargetType="StackPanel">
+            <Setter Property="Background" Value="Brown"/>
+        </Style>
+    </catel:DataWindow.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="{Binding Height,ElementName=MainWindow}"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <UniformGrid Rows="7" Columns="3" Grid.Column="1">
+                <UniformGrid.LayoutTransform>
+                    <RotateTransform Angle="180"/>
+                </UniformGrid.LayoutTransform>
+                <StackPanel>
+                    <Label Content="27"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource RedField}">
+                    <Label/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="41"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="28"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource RedField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="40"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource SaveZoneField}">
+                    <Label Content="29"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource RedField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource RedField}">
+                    <Label Content="39"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="30"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource RedField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="38"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="31"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource RedField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="37"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="32"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource RedField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="36"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="33"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource SaveZoneField}">
+                    <Label Content="34"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="35"/>
+                </StackPanel>
+            </UniformGrid>
+            <UniformGrid Rows="7" Columns="3" Grid.Row="1">
+                <UniformGrid.LayoutTransform>
+                    <RotateTransform Angle="90"/>
+                </UniformGrid.LayoutTransform>
+                <StackPanel>
+                    <Label Content="44"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource GreenField}">
+                    <Label/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="58"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="45"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource GreenField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="57"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource SaveZoneField}">
+                    <Label Content="46"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource GreenField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource GreenField}">
+                    <Label Content="56"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="47"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource GreenField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="55"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="48"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource GreenField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="54"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="49"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource GreenField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="53"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="50"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource SaveZoneField}">
+                    <Label Content="51"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="52"/>
+                </StackPanel>
+            </UniformGrid>
+            <UniformGrid Rows="7" Columns="3" Grid.Row="1" Grid.Column="2">
+                <UniformGrid.LayoutTransform>
+                    <RotateTransform Angle="270"/>
+                </UniformGrid.LayoutTransform>
+                <StackPanel>
+                    <Label Content="10"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource BlueField}">
+                    <Label/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="24"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="11"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource BlueField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="23"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource SaveZoneField}">
+                    <Label Content="12"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource BlueField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource BlueField}">
+                    <Label Content="22"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="13"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource BlueField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="21"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="14"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource BlueField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="20"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="15"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource BlueField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="19"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="16"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource SaveZoneField}">
+                    <Label Content="17"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="18"/>
+                </StackPanel>
+            </UniformGrid>
+            <UniformGrid Rows="7" Columns="3" Grid.Row="2" Grid.Column="1">
+                <StackPanel>
+                    <Label Content="61"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource YellowField}">
+                    <Label/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="7"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="62"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource YellowField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="6"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource SaveZoneField}">
+                    <Label Content="63"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource YellowField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource YellowField}">
+                    <Label Content="5"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="64"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource YellowField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="4"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="65"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource YellowField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="3"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="66"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource YellowField}">
+                    <Label Content=""/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="2"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="67"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource SaveZoneField}">
+                    <Label Content="68"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="1"/>
+                </StackPanel>
+            </UniformGrid>
+        </Grid>
     </Grid>
 </catel:DataWindow>
