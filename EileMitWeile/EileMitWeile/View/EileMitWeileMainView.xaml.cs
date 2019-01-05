@@ -19,7 +19,7 @@ namespace EileMitWeile.View
 	/// <summary>
 	/// Interaktionslogik für EileMitWeileMainView.xaml
 	/// </summary>
-	public partial class EileMitWeileMainView
+	public partial class EileMitWeileMainView : Window
 	{
         public EileMitWeileMainView()
         {
