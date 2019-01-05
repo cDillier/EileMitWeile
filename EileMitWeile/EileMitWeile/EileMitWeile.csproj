@@ -58,6 +58,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Runtime.Serialization.Formatters, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.Serialization.Formatters.4.3.0\lib\net46\System.Runtime.Serialization.Formatters.dll</HintPath>
@@ -104,8 +105,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Maps\FourPlayerMap.cs" />
     <Compile Include="Model\EileMitWeileMainModel.cs" />
+    <Compile Include="Model\MapCreater.cs" />
     <Compile Include="ViewModel\EileMitWeileMainViewModel.cs" />
+    <Compile Include="MapObjects\Field.cs" />
+    <Compile Include="Enum\FieldType.cs" />
     <Compile Include="View\EileMitWeileMainView.xaml.cs">
       <DependentUpon>EileMitWeileMainView.xaml</DependentUpon>
       <SubType>Code</SubType>

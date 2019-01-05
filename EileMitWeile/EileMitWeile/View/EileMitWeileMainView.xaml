@@ -30,7 +30,7 @@
             <ColumnDefinition Width="{Binding Height,ElementName=MainWindow}"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" Name="mapGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
