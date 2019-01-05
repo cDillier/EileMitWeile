@@ -13,27 +13,34 @@ using System.Windows.Controls.Primitives;
 public class MapCreater
 {
 
-    protected Field CreateField( Brush fieldColor, FieldType fieldType, Field prevField, Field nextField)
-    {
+    //protected Field CreateField( Brush fieldColor, FieldType fieldType, Field prevField, Field nextField)
+    //{
 
-        int fieldNumber = 0;
-        if (prevField != null ) 
-        {
-            fieldNumber = prevField.FieldNumber;
-        }
+    //    int fieldNumber = 0;
+    //    if (prevField != null ) 
+    //    {
+    //        fieldNumber = prevField.FieldNumber +1;
+    //    }
 
-        return CreateField(fieldNumber, fieldColor, fieldType, prevField, nextField);
-    }
+    //    return CreateField(fieldNumber, fieldColor, fieldType, prevField, nextField);
+    //}
      protected Field CreateField(int fieldNumber, Brush fieldColor, FieldType fieldType, Field prevField, Field nextField)
     {
         var field = new Field(fieldNumber, fieldColor, fieldType, prevField, nextField);
-        var stackPanel = new StackPanel() { Background = fieldColor };
-        var label = new Label() { Content = fieldNumber };
-
-        stackPanel.Children.Add(label);
-        field.Children.Add(stackPanel);
+        var label = new Label() {Content = fieldNumber!= -1 ? fieldNumber.ToString(): string.Empty };
+        
+        field.Children.Add(label);
         return field;
     }
 
-    
+    protected void SetNextField(Field currentField, Field nextField)
+    {
+        currentField.NextField = nextField;
+    }
+
+    protected void SetPrevField(Field currentField, Field prevField)
+    {
+        currentField.PrevField = prevField;
+    }
+
 }

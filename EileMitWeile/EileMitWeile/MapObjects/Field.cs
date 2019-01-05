@@ -10,23 +10,23 @@ using System.Windows.Media;
 
 namespace EileMitWeile.MapObjects
 {
-    public class Field : Panel
+    public class Field : StackPanel
     {
         public Field(int fieldNumber, Brush fieldColor, FieldType fieldType, Field prevField, Field nextField)
         {
             FieldNumber = fieldNumber;
-            FieldColor = fieldColor;
             FieldType = fieldType;
             PrevField = prevField;
             NextField = nextField;
+            Background = fieldColor;
         }
 
         public int FieldNumber { get; }
         public FieldType FieldType { get; }
-        public Brush FieldColor { get; }
+        public Brush FieldColor { get { return Background; } }
 
-        public Field PrevField { get; }
+        public Field PrevField { get; set; }
 
-        public Field NextField { get; }
+        public Field NextField { get; set; }
     }
 }
