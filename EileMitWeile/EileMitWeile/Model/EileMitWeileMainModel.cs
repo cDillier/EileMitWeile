@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EileMitWeile.Model
 {
-	public class EileMitWeileMainModel : Catel.Data.ModelBase
+	public class EileMitWeileMainModel
 	{
 	}
 }

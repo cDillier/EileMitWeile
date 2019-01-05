@@ -19,12 +19,13 @@ namespace EileMitWeile.View
 	/// <summary>
 	/// Interaktionslogik für EileMitWeileMainView.xaml
 	/// </summary>
-	public partial class EileMitWeileMainView : Catel.Windows.DataWindow
+	public partial class EileMitWeileMainView
 	{
         public EileMitWeileMainView()
         {
             InitializeComponent();
-            
+
+            this.DataContext = new ViewModel.EileMitWeileMainViewModel();
         }
     }
 }

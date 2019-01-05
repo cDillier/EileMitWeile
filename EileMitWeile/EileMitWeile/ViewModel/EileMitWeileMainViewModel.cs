@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace EileMitWeile.ViewModel
 {
-	public class EileMitWeileMainViewModel : Catel.MVVM.ViewModelBase
+	public class EileMitWeileMainViewModel : ViewModelBase
 	{
+        Model.EileMitWeileMainModel model;
+        
+        public EileMitWeileMainViewModel()
+        {
+            this.model = new Model.EileMitWeileMainModel();
+        }
+
+       //Hier Propertys för Bindnings
 	}
 }
