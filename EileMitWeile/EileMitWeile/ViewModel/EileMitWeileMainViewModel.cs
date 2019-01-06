@@ -35,7 +35,7 @@ namespace EileMitWeile.ViewModel
         public string DicedNumb
         {
             get { return _dicedNumb; }
-            set { SetProperty(ref _dicedNumb, "Gewürfelte Zahl: " + value); }
+            set { SetProperty(ref _dicedNumb, value); }
         }        
 
         private Color _actColor;
