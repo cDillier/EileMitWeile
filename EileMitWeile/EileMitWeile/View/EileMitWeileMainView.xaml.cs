@@ -26,7 +26,7 @@ namespace EileMitWeile.View
         {
             InitializeComponent();
 
-            //this.DataContext = new ViewModel.EileMitWeileMainViewModel();
+            this.DataContext = new ViewModel.EileMitWeileMainViewModel();
             var fourPlayerMap = new FourPlayerMap();
             var map = fourPlayerMap.CreateMap();
 

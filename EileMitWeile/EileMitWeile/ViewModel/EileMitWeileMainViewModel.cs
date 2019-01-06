@@ -15,19 +15,85 @@ namespace EileMitWeile.ViewModel
         public EileMitWeileMainViewModel()
         {
             this.model = new Model.EileMitWeileMainModel();
+
+            ActSpieler = "LALALAL";
         }
 
-        public string ActSpieler { get; set; }
-        public Color ActColour { get; set; }
-        public bool registerVisibility { get; set; } = false;
+        private string _actPlayer;
+        public string ActSpieler
+        {
+            get { return _actPlayer; }
+            set { SetProperty(ref _actPlayer, value); }
+        }
 
-        public static bool RotChecked { get; set; }
-        public bool BlauChecked { get; set; }
-        public bool GrünChecked { get; set; }
-        public bool GelbChecked { get; set; }
-        public string RotName { get; set; }
-        public string BlauName { get; set; }
-        public string GrünName { get; set; }
-        public string GelbName { get; set; }
+        private Color _actColor;
+        public Color ActColour
+        {
+            get { return _actColor; }
+            set { SetProperty(ref _actColor, value); }
+        }
+
+        private bool _registerVisibility;
+        public bool registerVisibility
+        {
+            get { return _registerVisibility; }
+            set { SetProperty(ref _registerVisibility, value); }
+        }
+
+        private bool _rotChecked;
+        public bool RotChecked
+        {
+            get { return _rotChecked; }
+            set { SetProperty(ref _rotChecked, value); }
+        }
+
+        private bool _blauChecked;
+        public bool BlauChecked
+        {
+            get { return _blauChecked; }
+            set { SetProperty(ref _blauChecked, value); }
+        }
+
+        private bool _grünChecked;
+        public bool GrünChecked
+        {
+            get { return _grünChecked; }
+            set { SetProperty(ref _grünChecked, value); }
+        }
+
+        private bool _gelbChecked;
+        public bool GelbChecked
+        {
+            get { return _gelbChecked; }
+            set { SetProperty(ref _gelbChecked, value); }
+        }
+
+        private string _rotName;
+        public string RotName
+        {
+            get { return _rotName; }
+            set { SetProperty(ref _rotName, value); }
+        }
+
+        private string _blauName;
+        public string BlauName
+        {
+            get { return _blauName; }
+            set { SetProperty(ref _blauName, value); }
+        }
+
+        private string _grünName;
+        public string GrünName
+        {
+            get { return _grünName; }
+            set { SetProperty(ref _grünName, value); }
+        }
+
+        private string _gelbName;
+        public string GelbName
+        {
+            get { return _gelbName; }
+            set { SetProperty(ref _gelbName, value); }
+        }
     }
 }
