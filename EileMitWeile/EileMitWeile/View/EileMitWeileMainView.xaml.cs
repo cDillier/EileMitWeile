@@ -27,7 +27,7 @@ namespace EileMitWeile.View
             InitializeComponent();
 
             this.DataContext = new ViewModel.EileMitWeileMainViewModel();
-            mapGrid.Children.Add(new Maps.FourPlayerMap().CreateMap());
+            mapGrid.Children.Add(MapFactory.GetMap(Enum.MapName.FourPlayerMap));
         }
     }
 }
