@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace EileMitWeile.ViewModel
@@ -20,7 +21,7 @@ namespace EileMitWeile.ViewModel
         public Color ActColour { get; set; }
         public bool registerVisibility { get; set; } = false;
 
-        public bool RotChecked { get; set; }
+        public static bool RotChecked { get; set; }
         public bool BlauChecked { get; set; }
         public bool GrünChecked { get; set; }
         public bool GelbChecked { get; set; }

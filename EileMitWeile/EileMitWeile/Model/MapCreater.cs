@@ -12,18 +12,6 @@ using System.Windows.Controls.Primitives;
 
 public class MapCreater
 {
-
-    //protected Field CreateField( Brush fieldColor, FieldType fieldType, Field prevField, Field nextField)
-    //{
-
-    //    int fieldNumber = 0;
-    //    if (prevField != null ) 
-    //    {
-    //        fieldNumber = prevField.FieldNumber +1;
-    //    }
-
-    //    return CreateField(fieldNumber, fieldColor, fieldType, prevField, nextField);
-    //}
      protected Field CreateField(int fieldNumber, Brush fieldColor, FieldType fieldType, Field prevField, Field nextField)
     {
         var field = new Field(fieldNumber, fieldColor, fieldType, prevField, nextField);
@@ -33,14 +21,9 @@ public class MapCreater
         return field;
     }
 
-    protected void SetNextField(Field currentField, Field nextField)
+    protected void SetFieldColorAndFieldType(Field field, Brush fieldColor,FieldType fieldType )
     {
-        currentField.NextField = nextField;
+        field.Background = fieldColor;
+        field.FieldType = fieldType;
     }
-
-    protected void SetPrevField(Field currentField, Field prevField)
-    {
-        currentField.PrevField = prevField;
-    }
-
 }

@@ -19,10 +19,11 @@ namespace EileMitWeile.MapObjects
             PrevField = prevField;
             NextField = nextField;
             Background = fieldColor;
+           
         }
 
         public int FieldNumber { get; }
-        public FieldType FieldType { get; }
+        public FieldType FieldType { get; set; }
         public Brush FieldColor { get { return Background; } }
 
         public Field PrevField { get; set; }

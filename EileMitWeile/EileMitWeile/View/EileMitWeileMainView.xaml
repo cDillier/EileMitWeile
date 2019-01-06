@@ -84,19 +84,23 @@
 
             </Grid>
         </Grid>
-            
-            <Grid Grid.Column="1" Name="mapGrid">
+
+        <Grid Grid.Column="1" Name="mapGrid">
             <Grid.RowDefinitions>
+                <RowDefinition Height="7*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="7*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="7*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="7*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="7*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="7*"/>
             </Grid.ColumnDefinitions>
-            <UniformGrid Rows="7" Columns="3" Grid.Column="1">
+            <!--<UniformGrid Rows="7" Columns="3" Grid.Column="1">
                 <UniformGrid.LayoutTransform>
                     <RotateTransform Angle="180"/>
                 </UniformGrid.LayoutTransform>
@@ -364,7 +368,7 @@
                 <StackPanel>
                     <Label Content="1"/>
                 </StackPanel>
-            </UniformGrid>
+            </UniformGrid>-->
         </Grid>
     </Grid>
 </Window>
