@@ -101,8 +101,9 @@
     <Compile Include="MapObjects\IMapObject.cs" />
     <Compile Include="Maps\FourPlayerMap.cs" />
     <Compile Include="Maps\IMap.cs" />
+    <Compile Include="Maps\MapFactory.cs" />
     <Compile Include="Model\EileMitWeileMainModel.cs" />
-    <Compile Include="Model\MapCreater.cs" />
+    <Compile Include="Maps\MapCreater.cs" />
     <Compile Include="ViewModel\Command.cs" />
     <Compile Include="ViewModel\EileMitWeileMainViewModel.cs" />
     <Compile Include="MapObjects\Field.cs" />

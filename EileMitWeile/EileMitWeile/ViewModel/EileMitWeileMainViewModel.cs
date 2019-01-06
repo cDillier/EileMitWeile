@@ -23,11 +23,6 @@ namespace EileMitWeile.ViewModel
             DicedNumb = "5";
         }
 
-        public UIElement GetMap(Enum.MapName map)
-        {
-            return model.GetMap(map);
-        }
-        
         #region Properties
         private string _actPlayer;
         public string ActSpieler
