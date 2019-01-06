@@ -29,7 +29,7 @@ namespace EileMitWeile.View
 
             this.DataContext = new ViewModel.EileMitWeileMainViewModel();
             mapGrid.Children.Add(MapFactory.GetMap(Enum.MapName.FourPlayerMap));
-            mapGrid.Children.Add(new Player(null, null, Brushes.Red.Color));
+            //mapGrid.Children.Add(new Player(null, null, Brushes.Red.Color));
 
         }
     }

@@ -63,6 +63,9 @@ namespace EileMitWeile.Maps
 
             //Alle Base erstellen
             var redBase = new Base(Brushes.Red.Color, fields[38], 180);
+            var stackPanel = new StackPanel();
+            stackPanel.Children.Add(new Player(fields[38], fields[38], Brushes.Red.Color));
+            redBase.Child = stackPanel;
             var blueBase = new Base(Brushes.Blue.Color, fields[21], 270);
             var greenBase = new Base(Brushes.Green.Color, fields[55], 90);
             var yellowBase = new Base(Brushes.Yellow.Color, fields[62], 0);
