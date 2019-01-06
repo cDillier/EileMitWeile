@@ -20,25 +20,5 @@ namespace EileMitWeile.Model
 
             return numb.ToString();
         }
-
-        public System.Windows.UIElement GetMap(MapName map)
-        {
-            switch (map)
-            {
-                case MapName.FourPlayerMap: return new FourPlayerMap().CreateMap();
-                default:
-                    return new FourPlayerMap().CreateMap();
-            }
-        }
-
-        public void CheckMove()
-        {
-
-        }
-
-        public void MovePlayer()
-        {
-
-        }
     }
 }
