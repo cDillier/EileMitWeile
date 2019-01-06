@@ -20,6 +20,7 @@ namespace EileMitWeile.Model
 
             return numb.ToString();
         }
+
         public System.Windows.UIElement GetMap(MapName map)
         {
             switch (map)
@@ -28,6 +29,16 @@ namespace EileMitWeile.Model
                 default:
                     return new FourPlayerMap().CreateMap();
             }
+        }
+
+        public void CheckMove()
+        {
+
+        }
+
+        public void MovePlayer()
+        {
+
         }
     }
 }
