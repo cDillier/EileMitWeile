@@ -100,6 +100,7 @@
     <Compile Include="Maps\FourPlayerMap.cs" />
     <Compile Include="Model\EileMitWeileMainModel.cs" />
     <Compile Include="Model\MapCreater.cs" />
+    <Compile Include="ViewModel\Command.cs" />
     <Compile Include="ViewModel\EileMitWeileMainViewModel.cs" />
     <Compile Include="MapObjects\Field.cs" />
     <Compile Include="Enum\FieldType.cs" />

@@ -16,9 +16,11 @@ namespace EileMitWeile.ViewModel
         {
             this.model = new Model.EileMitWeileMainModel();
 
-            ActSpieler = "LALALAL";
+            //Removable | Onl< for test
+            ActSpieler = "LALALALa";
         }
-
+        
+        #region Properties
         private string _actPlayer;
         public string ActSpieler
         {
@@ -94,6 +96,40 @@ namespace EileMitWeile.ViewModel
         {
             get { return _gelbName; }
             set { SetProperty(ref _gelbName, value); }
+        }
+        #endregion
+
+        public Command DiceCmd
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Dice();
+                });
+            }
+        }
+
+        public Command StartGameCmd
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    StartGame();
+                });
+            }
+        }
+
+        private void StartGame()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Dice()
+        {
+            //toDo
+            ActSpieler = "DaNeZdrava";
         }
     }
 }
