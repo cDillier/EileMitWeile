@@ -55,8 +55,7 @@
             <TextBox Grid.Column="1" Grid.Row="3" Background="{Binding ActColour}"/>
 
             <Button Grid.Column="1" Grid.Row="5" Content="Würfel" Command="{Binding DiceCmd}"/>
-            <Label Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3" Content="Gewürfelte Zahl:"/>
-            <Label Grid.Column="3" Grid.Row="6" HorizontalAlignment="Center" Content="6"/>
+            <Label Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3" Content="{Binding DicedNumb}"/>
 
             <Grid Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="3" Visibility="{Binding registerVisibility}">
                 <Grid.ColumnDefinitions>

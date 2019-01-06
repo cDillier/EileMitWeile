@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -18,6 +19,8 @@ namespace EileMitWeile.ViewModel
 
             //Removable | Onl< for test
             ActSpieler = "LALALALa";
+            registerVisibility = Visibility.Hidden;
+            DicedNumb = "5";
         }
         
         #region Properties
@@ -28,6 +31,13 @@ namespace EileMitWeile.ViewModel
             set { SetProperty(ref _actPlayer, value); }
         }
 
+        private string _dicedNumb;
+        public string DicedNumb
+        {
+            get { return _dicedNumb; }
+            set { SetProperty(ref _dicedNumb, "Gewürfelte Zahl: " + value); }
+        }        
+
         private Color _actColor;
         public Color ActColour
         {
@@ -35,8 +45,8 @@ namespace EileMitWeile.ViewModel
             set { SetProperty(ref _actColor, value); }
         }
 
-        private bool _registerVisibility;
-        public bool registerVisibility
+        private Visibility _registerVisibility;
+        public Visibility registerVisibility
         {
             get { return _registerVisibility; }
             set { SetProperty(ref _registerVisibility, value); }
