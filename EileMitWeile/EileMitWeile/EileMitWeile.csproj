@@ -99,6 +99,7 @@
     <Compile Include="Enum\MapName.cs" />
     <Compile Include="MapObjects\Base.cs" />
     <Compile Include="MapObjects\IMapObject.cs" />
+    <Compile Include="MapObjects\Player.cs" />
     <Compile Include="Maps\FourPlayerMap.cs" />
     <Compile Include="Maps\IMap.cs" />
     <Compile Include="Maps\MapFactory.cs" />

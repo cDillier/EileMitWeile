@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace EileMitWeile.MapObjects
 {
-    interface IMapObject
+    public interface IMapObject
     {
         int FieldNumber { get; }
         FieldType FieldType { get; }

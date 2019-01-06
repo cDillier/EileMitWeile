@@ -1,4 +1,5 @@
-﻿using EileMitWeile.Maps;
+﻿using EileMitWeile.MapObjects;
+using EileMitWeile.Maps;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,8 @@ namespace EileMitWeile.View
 
             this.DataContext = new ViewModel.EileMitWeileMainViewModel();
             mapGrid.Children.Add(MapFactory.GetMap(Enum.MapName.FourPlayerMap));
+            mapGrid.Children.Add(new Player(null, null, Brushes.Red.Color));
+
         }
     }
 }
