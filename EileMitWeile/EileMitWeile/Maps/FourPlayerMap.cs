@@ -17,6 +17,12 @@ namespace EileMitWeile.Maps
     {
         //Anzahl normale Felder mit Bänken
         const int maxFieldNumber = 68;
+
+        Base redBase = null;
+        Base blueBase = null;
+        Base greenBase = null;
+        Base yellowBase = null;
+
         List<Field> fields = new List<Field>();
         public UIElement CreateMap()
         {
@@ -62,13 +68,10 @@ namespace EileMitWeile.Maps
             Grid.SetRowSpan(yellowUniGrid, 2);
 
             //Alle Base erstellen
-            var redBase = new Base(Brushes.Red.Color, fields[38], 180);
-            var stackPanel = new StackPanel();
-            stackPanel.Children.Add(new Player(fields[38], fields[38], Brushes.Red.Color));
-            redBase.Child = stackPanel;
-            var blueBase = new Base(Brushes.Blue.Color, fields[21], 270);
-            var greenBase = new Base(Brushes.Green.Color, fields[55], 90);
-            var yellowBase = new Base(Brushes.Yellow.Color, fields[62], 0);
+            redBase = new Base(Brushes.Red.Color, fields[38], 180, fields[33]);
+            blueBase = new Base(Brushes.Blue.Color, fields[21], 270, fields[16]);
+            greenBase = new Base(Brushes.Green.Color, fields[55], 90, fields[50]);
+            yellowBase = new Base(Brushes.Yellow.Color, fields[62], 0, fields[67]);
 
             //Base zuweisen
             Grid.SetColumn(redBase, 0);
@@ -89,7 +92,27 @@ namespace EileMitWeile.Maps
             mapGrid.Children.Add(blueBase);
             mapGrid.Children.Add(greenBase);
             mapGrid.Children.Add(yellowBase);
+            SendPlayerToBase(new Player(null, null, Brushes.Red));
             return mapGrid;
+        }
+
+        public void SendPlayerToBase(Player player)
+        {
+            AddPlayerToBase(player, redBase);
+            AddPlayerToBase(player, yellowBase);
+            AddPlayerToBase(player, blueBase);
+            AddPlayerToBase(player, greenBase);
+        }
+
+        private void AddPlayerToBase(Player player, Base startBase)
+        {
+            if (player.PlayerColor == startBase.FieldColor)
+            {
+                (startBase.Child as StackPanel).Children.Add(player);
+                player.CurrentField = startBase;
+                player.LastFieldBeforeColoredField = startBase.LastFieldBeforeColoredField;
+            }
+
         }
 
         private UniformGrid CreateUniformGrid(List<int> fieldNumbers, double rotation)
@@ -118,6 +141,10 @@ namespace EileMitWeile.Maps
             fields[maxFieldNumber - 1].NextField = fields[0];
             fields[0].PrevField = fields[maxFieldNumber - 1];
 
+
+            //Test
+            (fields[0].Children[0] as StackPanel).Children.Add(new Player(fields[38], fields[0], Brushes.Red));
+
             //Erstellt alle Safe-Zones (Bänke)
             foreach (int index in new List<int>() { 11, 16, 21, 28, 33, 38, 45, 50, 55, 62, 67 })
             {
@@ -145,10 +172,12 @@ namespace EileMitWeile.Maps
                     SetPrevAndNextFieldByCurrentFieldIndex(i);
                 }
             }
-            foreach (int index in new List<int>() { 16, 33, 50, 67 })
+            foreach (int index in new List<int>() { 16, 33, 50 })
             {
                 SetPrevAndNextFieldByCurrentFieldIndex(index);
             }
+            fields[maxFieldNumber - 1].PrevField = fields[maxFieldNumber - 2];
+            fields[maxFieldNumber - 1].NextField = fields[0];
         }
 
         private void SetPrevAndNextFieldByCurrentFieldIndex(int index)

@@ -12,25 +12,56 @@ namespace EileMitWeile.MapObjects
 {
     public class Player : Border
     {
-        private IMapObject FirstColorFiled;
-        private IMapObject CurrentField;
+        public IMapObject LastFieldBeforeColoredField { get; set; }
+        public IMapObject CurrentField { get; set; }
+        public Brush PlayerColor => Background;
 
-        public Player(IMapObject firstColorFiled, IMapObject currentField, Color playerColor)
+        public Player(IMapObject lastFieldBeforeColoredField, IMapObject currentField, Brush playerColor)
         {
-            this.FirstColorFiled = firstColorFiled;
+            this.LastFieldBeforeColoredField = lastFieldBeforeColoredField;
             this.CurrentField = currentField;
-
+            Width = 15;
+            Height = 15;
             BorderThickness = new Thickness(2);
             BorderBrush = Brushes.Black;
-            Background = Brushes.Red;
+            Background = playerColor;
             CornerRadius = new CornerRadius(1000);
-            MouseUp += border_MouseUp;
-            
+            MouseLeftButtonUp += border_MouseUp;
         }
-
+       
         private void border_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            CurrentField.NextField.Children.Add(this);
+            RemoveFromCurrentField();
+            AddToNextField();
+
+        }
+
+        private void RemoveFromCurrentField()
+        {
+            (this.Parent as StackPanel).Children.Remove(this);
+        }
+
+        private void AddToNextField()
+        {
+            if (CurrentField.NextField != null)
+            {
+                switch (CurrentField.NextField.FieldType)
+                {
+                    case Enum.FieldType.Normal:
+                        (CurrentField.NextField.Children[0] as StackPanel).Children.Add(this);
+                        break;
+                    case Enum.FieldType.SafeZone:
+                        (CurrentField.NextField.Children[0] as StackPanel).Children.Add(this);
+                        break;
+                    case Enum.FieldType.Finish:
+                        (CurrentField.NextField.Children[0] as StackPanel).Children.Add(this);
+                        break;
+                    case Enum.FieldType.Base:
+                        (CurrentField.NextField.Children[0] as StackPanel).Children.Add(this);
+                        break;
+                }
+                CurrentField = CurrentField.NextField;
+            }
         }
     }
 }

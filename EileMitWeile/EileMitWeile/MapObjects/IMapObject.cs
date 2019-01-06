@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Windows;
 
 namespace EileMitWeile.MapObjects
 {
@@ -13,9 +14,8 @@ namespace EileMitWeile.MapObjects
         int FieldNumber { get; }
         FieldType FieldType { get; }
         Brush FieldColor { get; }
-
         Field PrevField { get; }
-
         Field NextField { get; }
+        UIElement CurrentField { get; }
     }
 }

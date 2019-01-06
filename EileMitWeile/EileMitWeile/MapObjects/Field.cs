@@ -29,5 +29,7 @@ namespace EileMitWeile.MapObjects
         public Field PrevField { get; set; }
 
         public Field NextField { get; set; }
+
+        public UIElement CurrentField => this;
     }
 }

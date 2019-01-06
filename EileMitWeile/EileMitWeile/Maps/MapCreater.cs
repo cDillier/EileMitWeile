@@ -16,8 +16,10 @@ public class MapCreater
     {
         var field = new Field(fieldNumber, fieldColor, fieldType, prevField, nextField);
         var label = new Label() {Content = fieldNumber!= -1 ? fieldNumber.ToString(): string.Empty };
-        
-        field.Children.Add(label);
+        var stackPanel = new StackPanel() { Orientation = Orientation.Horizontal };
+        stackPanel.Children.Add(label);
+        //field.Children.Add(label);
+        field.Children.Add(stackPanel);
         return field;
     }
 
