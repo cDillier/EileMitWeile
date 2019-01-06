@@ -22,6 +22,11 @@ namespace EileMitWeile.ViewModel
             registerVisibility = Visibility.Hidden;
             DicedNumb = "5";
         }
+
+        public UIElement GetMap(Enum.MapName map)
+        {
+            return model.GetMap(map);
+        }
         
         #region Properties
         private string _actPlayer;

@@ -9,56 +9,89 @@ using System.Windows;
 using System.Windows.Controls.Primitives;
 using EileMitWeile.Enum;
 using System.Windows.Controls;
+using EileMitWeile.Maps;
 
 namespace EileMitWeile.Maps
 {
-    public class FourPlayerMap : MapCreater
+    public class FourPlayerMap : MapCreater, IMap
     {
         //Anzahl normale Felder mit Bänken
         const int maxFieldNumber = 68;
         List<Field> fields = new List<Field>();
-        public List<UniformGrid> CreateMap()
+        public UIElement CreateMap()
         {
+            //Felder erstellen
             CreateFields();
             var yellowUniGrid = CreateUniformGrid(new List<int>() { 60, 75, 8, 61, 74, 7, 62, 73, 6, 63, 72, 5, 64, 71, 4, 65, 70, 3, 66, 69, 2, 67, 68, 1 }, 0);
             var blueUniGrid = CreateUniformGrid(new List<int>() { 9, 82, 25, 10, 81, 24, 11, 80, 23, 12, 79, 22, 13, 78, 21, 14, 77, 20, 15, 76, 19, 16, 17, 18, }, 270);
             var redUniGrid = CreateUniformGrid(new List<int>() { 26, 89, 42, 27, 88, 41, 28, 87, 40, 29, 86, 39, 30, 85, 38, 31, 84, 37, 32, 83, 36, 33, 34, 35, }, 180);
             var greenUniGrid = CreateUniformGrid(new List<int>() { 43, 96, 59, 44, 95, 58, 45, 94, 57, 46, 93, 56, 47, 92, 55, 48, 91, 54, 49, 90, 53, 50, 51, 52, }, 90);
 
-            //var mapGrid = new Grid();
-            List<UniformGrid> mapGrid = new List<UniformGrid>();
+            //Grid erstellen
+            Grid mapGrid = new Grid();
+            mapGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(7, GridUnitType.Star) });
+            mapGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
+            mapGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(7, GridUnitType.Star) });
+            mapGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
+            mapGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(7, GridUnitType.Star) });
+            mapGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(7, GridUnitType.Star) });
+            mapGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+            mapGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(7, GridUnitType.Star) });
+            mapGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+            mapGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(7, GridUnitType.Star) });
 
-            mapGrid.Add(redUniGrid);
-            mapGrid.Add(blueUniGrid);
-            mapGrid.Add(greenUniGrid);
-            mapGrid.Add(yellowUniGrid);
+            //Felder zuweisen
+            Grid.SetColumn(redUniGrid, 1);
+            Grid.SetRow(redUniGrid, 0);
+            Grid.SetColumnSpan(redUniGrid, 3);
+            Grid.SetRowSpan(redUniGrid, 2);
+
+            Grid.SetColumn(blueUniGrid, 3);
+            Grid.SetRow(blueUniGrid, 1);
+            Grid.SetColumnSpan(blueUniGrid, 2);
+            Grid.SetRowSpan(blueUniGrid, 3);
+
+            Grid.SetColumn(greenUniGrid, 0);
+            Grid.SetRow(greenUniGrid, 1);
+            Grid.SetColumnSpan(greenUniGrid, 2);
+            Grid.SetRowSpan(greenUniGrid, 3);
+
+            Grid.SetColumn(yellowUniGrid, 1);
+            Grid.SetRow(yellowUniGrid, 3);
+            Grid.SetColumnSpan(yellowUniGrid, 3);
+            Grid.SetRowSpan(yellowUniGrid, 2);
+
+            //Alle Base erstellen
+            var redBase = new Base(Brushes.Red.Color, fields[38], 180);
+            var blueBase = new Base(Brushes.Blue.Color, fields[21], 270);
+            var greenBase = new Base(Brushes.Green.Color, fields[55], 90);
+            var yellowBase = new Base(Brushes.Yellow.Color, fields[62], 0);
+
+            //Base zuweisen
+            Grid.SetColumn(redBase, 0);
+            Grid.SetRow(redBase, 0);
+            Grid.SetColumn(blueBase, 4);
+            Grid.SetRow(blueBase, 0);
+            Grid.SetColumn(greenBase, 0);
+            Grid.SetRow(greenBase, 4);
+            Grid.SetColumn(yellowBase, 4);
+            Grid.SetRow(yellowBase, 4);
+
+            //Erstellte Elemente dem Grid hinzufügen
+            mapGrid.Children.Add(greenUniGrid);
+            mapGrid.Children.Add(yellowUniGrid);
+            mapGrid.Children.Add(blueUniGrid);
+            mapGrid.Children.Add(redUniGrid);
+            mapGrid.Children.Add(redBase);
+            mapGrid.Children.Add(blueBase);
+            mapGrid.Children.Add(greenBase);
+            mapGrid.Children.Add(yellowBase);
             return mapGrid;
         }
-        public List<Border> CreateBorders()
-        {
-            var borders = new List<Border>();
-            //Beispiel wie es mit spielern aussehen kännte
-            //var redBase = new Base(Brushes.Red.Color, fields[38], 180);
-            //var stackPanel = new StackPanel() { VerticalAlignment = VerticalAlignment.Center, HorizontalAlignment = HorizontalAlignment.Center, RenderTransformOrigin = new Point(0.5, 0.5), RenderTransform = new RotateTransform(50) };
-            //stackPanel.Children.Add(new TextBox() { Text = "▒", Foreground = Brushes.Red, Margin = new Thickness(5) });
-            //stackPanel.Children.Add(new TextBox() { Text = "▒" ,Foreground = Brushes.Red ,Margin = new Thickness(5)});
-            //stackPanel.Children.Add(new TextBox() { Text = "▒" ,Foreground = Brushes.Red ,Margin = new Thickness(5)});
-            //stackPanel.Children.Add(new TextBox() { Text = "▒", Foreground = Brushes.Red ,Margin = new Thickness(5) });
-            //redBase.Child = stackPanel;
-            //borders.Add(redBase);
-
-            borders.Add(new Base(Brushes.Red.Color, fields[38], 180));
-            borders.Add(new Base(Brushes.Blue.Color, fields[21], 270));
-            borders.Add(new Base(Brushes.Green.Color, fields[55], 90));
-            borders.Add(new Base(Brushes.Yellow.Color, fields[62], 0));
-            return borders;
-        }
-
-
 
         private UniformGrid CreateUniformGrid(List<int> fieldNumbers, double rotation)
         {
-            var uniGrid = new UniformGrid() { Columns = 3, Rows = 8, LayoutTransform = new RotateTransform(rotation), Background = Brushes.Black};
+            var uniGrid = new UniformGrid() { Columns = 3, Rows = 8, LayoutTransform = new RotateTransform(rotation), Background = Brushes.Black };
             foreach (var fieldNumber in fieldNumbers)
             {
                 uniGrid.Children.Add(fields[fieldNumber - 1]);
@@ -120,20 +153,6 @@ namespace EileMitWeile.Maps
             fields[index].PrevField = fields[index - 1];
             fields[index].NextField = fields[index + 1];
         }
-
-
-        //private void BuildFieldList(List<Field> singleField)
-        //{
-        //    if (singleField != null)
-        //    {
-        //        int i = 0;
-        //        while (singleField[i].NextField != null)
-        //        {
-        //            singleField.Add(singleField[i].NextField);
-        //            i++;
-        //        }
-        //    }
-        //}
 
         private void AddChild(UniformGrid uniGrid, Field field)
         {

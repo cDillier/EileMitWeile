@@ -96,8 +96,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Enum\MapName.cs" />
     <Compile Include="MapObjects\Base.cs" />
+    <Compile Include="MapObjects\IMapObject.cs" />
     <Compile Include="Maps\FourPlayerMap.cs" />
+    <Compile Include="Maps\IMap.cs" />
     <Compile Include="Model\EileMitWeileMainModel.cs" />
     <Compile Include="Model\MapCreater.cs" />
     <Compile Include="ViewModel\Command.cs" />

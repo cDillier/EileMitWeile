@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace EileMitWeile.MapObjects
 {
-    class Base : Border
+    class Base : Border, IMapObject
     {
         public Base(Color teamColor, Field nextField, double rotation)
         {
@@ -25,5 +25,9 @@ namespace EileMitWeile.MapObjects
         public Brush FieldColor { get { return BorderBrush; } }
 
         public Field NextField { get; set; }
+
+        public int FieldNumber => -2;
+
+        public Field PrevField => null;
     }
 }
