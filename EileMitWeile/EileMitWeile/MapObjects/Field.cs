@@ -10,7 +10,7 @@ using System.Windows.Media;
 
 namespace EileMitWeile.MapObjects
 {
-    public class Field : StackPanel
+    public class Field : StackPanel, IMapObject
     {
         public Field(int fieldNumber, Brush fieldColor, FieldType fieldType, Field prevField, Field nextField)
         {
