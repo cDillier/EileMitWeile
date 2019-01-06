@@ -11,7 +11,12 @@ namespace EileMitWeile.Model
         public string Dice()
         {
             Random r = new Random();
-            return r.Next(0, 6).ToString();
+            int numb = r.Next(0, 7);
+
+            if (numb == 7)
+                numb = 6;
+
+            return numb.ToString();
         }
     }
 }

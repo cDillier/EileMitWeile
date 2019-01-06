@@ -138,8 +138,7 @@ namespace EileMitWeile.ViewModel
 
         private void Dice()
         {
-            //toDo
-            ActSpieler = "DaNeZdrava";
+            DicedNumb = this.model.Dice();
         }
     }
 }
