@@ -39,6 +39,12 @@ namespace EileMitWeile.View
             map.SendPlayerToBase(new Player(Brushes.Blue));
             map.SendPlayerToBase(new Player(Brushes.Blue));
             map.SendPlayerToBase(new Player(Brushes.Blue));
+
+            map.SendPlayerToBase(new Player(Brushes.Yellow));
+            map.SendPlayerToBase(new Player(Brushes.Yellow));
+            map.SendPlayerToBase(new Player(Brushes.Yellow));
+            map.SendPlayerToBase(new Player(Brushes.Yellow));
+
             //mapGrid.Children.Add(new Player(null, null, Brushes.Red.Color));
 
         }

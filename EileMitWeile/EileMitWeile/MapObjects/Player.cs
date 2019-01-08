@@ -42,6 +42,7 @@ namespace EileMitWeile.MapObjects
                 MovePlayer(actualInfo.Item2);
             }
 
+            FinishStep();
         }
 
         private void MovePlayer(int steps)
@@ -115,6 +116,24 @@ namespace EileMitWeile.MapObjects
                 return (currentColor.Background, diceNumber);
             }
             return (null, diceNumber);
+        }
+
+        private void FinishStep()
+        {
+            var grid = new Grid();
+            var checkBox = new CheckBox();
+            FrameworkElement currentField = this;
+            while (currentField.Parent != null && currentField.Name != "BaseGrid")
+            {
+                currentField = currentField.Parent as FrameworkElement;
+            }
+            if (currentField.Name == "BaseGrid")
+            {
+                grid = ((currentField as Grid).Children[0] as Grid);
+                checkBox = grid.Children[6] as CheckBox;
+                checkBox.IsChecked = true;
+            }
+
         }
     }
 }
