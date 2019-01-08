@@ -18,6 +18,12 @@ namespace EileMitWeile.Model
             if (numb == 7)
                 numb = 6;
 
+            if (numb == 6)
+                numb += r.Next(1, 7);
+
+            if (numb == 12)
+                numb += r.Next(1, 7);
+
             return numb.ToString();
         }
 
@@ -29,16 +35,6 @@ namespace EileMitWeile.Model
                 default:
                     return new FourPlayerMap().CreateMap();
             }
-        }
-
-        public void CheckMove()
-        {
-
-        }
-
-        public void MovePlayer()
-        {
-
         }
     }
 }
