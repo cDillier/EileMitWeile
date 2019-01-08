@@ -68,10 +68,10 @@ namespace EileMitWeile.Maps
             Grid.SetRowSpan(yellowUniGrid, 2);
 
             //Alle Base erstellen
-            redBase = CreateBase(Brushes.Red.Color, fields[38], 180, fields[33]);
-            blueBase = CreateBase(Brushes.Blue.Color, fields[21], 270, fields[16]);
-            greenBase = CreateBase(Brushes.Green.Color, fields[55], 90, fields[50]);
-            yellowBase = CreateBase(Brushes.Yellow.Color, fields[62], 0, fields[67]);
+            redBase = CreateBase(Brushes.Red.Color, fields[38], 180, fields[33], fields[82]);
+            blueBase = CreateBase(Brushes.Blue.Color, fields[21], 270, fields[16], fields[75]);
+            greenBase = CreateBase(Brushes.Green.Color, fields[55], 90, fields[50], fields[89]);
+            yellowBase = CreateBase(Brushes.Yellow.Color, fields[62], 0, fields[67], fields[68]); 
 
             //Base zuweisen
             Grid.SetColumn(redBase, 0);

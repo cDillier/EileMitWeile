@@ -12,7 +12,7 @@ namespace EileMitWeile.MapObjects
 {
     public class Base : Border, IMapObject
     {
-        public Base(Color teamColor, Field nextField, double rotation, Field lastFieldBeforeColoredField)
+        public Base(Color teamColor, Field nextField, double rotation, Field lastFieldBeforeColoredField, Field firstColoredField)
         {
             NextField = nextField;
             CornerRadius = new CornerRadius(1000);

@@ -23,9 +23,9 @@ public class MapCreater
         return field;
     }
 
-    protected Base CreateBase(Color teamColor, Field fieldNext,double rotation,Field lastFieldBeforeColoredField)
+    protected Base CreateBase(Color teamColor, Field fieldNext,double rotation,Field lastFieldBeforeColoredField, Field firstColoredField)
     {
-        var base_ = new Base(teamColor, fieldNext, rotation, lastFieldBeforeColoredField);
+        var base_ = new Base(teamColor, fieldNext, rotation, lastFieldBeforeColoredField,firstColoredField);
         base_.Child = new StackPanel() { VerticalAlignment = VerticalAlignment.Center, HorizontalAlignment = HorizontalAlignment.Center, LayoutTransform = new RotateTransform(45) };
         return base_;
     }

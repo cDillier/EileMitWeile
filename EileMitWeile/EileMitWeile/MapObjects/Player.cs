@@ -65,7 +65,6 @@ namespace EileMitWeile.MapObjects
 
         private void AddToNextField()
         {
-
             if (CurrentField.NextField != null)
             {
                 switch (CurrentField.NextField.FieldType)
