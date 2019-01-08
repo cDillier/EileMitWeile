@@ -16,11 +16,6 @@ namespace EileMitWeile.ViewModel
         public EileMitWeileMainViewModel()
         {
             this.model = new Model.EileMitWeileMainModel();
-
-            //Removable | Onl< for test
-            ActSpieler = "LALALALa";
-            registerVisibility = Visibility.Hidden;
-            DicedNumb = "5";
         }
 
         #region Properties
@@ -38,8 +33,8 @@ namespace EileMitWeile.ViewModel
             set { SetProperty(ref _dicedNumb, value); }
         }        
 
-        private Color _actColor;
-        public Color ActColour
+        private Brush _actColor;
+        public Brush ActColour
         {
             get { return _actColor; }
             set { SetProperty(ref _actColor, value); }
@@ -107,6 +102,24 @@ namespace EileMitWeile.ViewModel
             get { return _gelbName; }
             set { SetProperty(ref _gelbName, value); }
         }
+
+        private bool _nextPlayer;
+        public bool NextPlayer
+        {
+            get { return _nextPlayer; }
+            set
+            {
+                SetProperty(ref _nextPlayer, value);
+
+                if (!string.IsNullOrEmpty(DicedNumb) && DicedNumb != "0")
+                {
+                    if (_nextPlayer == true)
+                        SetNextPlayer();
+
+                    DicedNumb = "0";
+                }
+            }
+        }
         #endregion
 
         public Command DiceCmd
@@ -133,12 +146,39 @@ namespace EileMitWeile.ViewModel
 
         private void StartGame()
         {
-            throw new NotImplementedException();
+            registerVisibility = Visibility.Hidden;
+
+            ActColour = Brushes.Red;
+            ActSpieler = RotName;
         }
 
         private void Dice()
         {
             DicedNumb = this.model.Dice();
+        }
+
+        private void SetNextPlayer()
+        {
+            if (Color.Equals(ActColour, Brushes.Red) && RotChecked)
+            {
+                ActColour = Brushes.Blue;
+                ActSpieler = BlauName;
+            }
+            else if (Color.Equals(ActColour, Brushes.Blue) && BlauChecked)
+            {
+                ActColour = Brushes.Green;
+                ActSpieler = GrünName;
+            }
+            else if (Color.Equals(ActColour, Brushes.Yellow) && GrünChecked)
+            {
+                ActColour = Brushes.Red;
+                ActSpieler = RotName;
+            }
+            else if (Color.Equals(ActColour, Brushes.Green) && GrünChecked)
+            {
+                ActColour = Brushes.Yellow;
+                ActSpieler = GelbName;
+            }
         }
     }
 }

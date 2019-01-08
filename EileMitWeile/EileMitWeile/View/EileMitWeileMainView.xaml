@@ -36,11 +36,11 @@
             <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Content="Aktueller Spieler:"/>
             <TextBox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Text="{Binding ActSpieler}"/>
             <!--<TextBox Grid.Column="1" Grid.Row="3" Name="actColor" Background="{Binding ActColour}"/>-->
-            <TextBox Grid.Column="1" Grid.Row="3" Name="actColor" Background="Red"/>
+            <TextBox Grid.Column="1" Grid.Row="3" Name="actColor" Background="{Binding ActColour}"/>
             <Button Grid.Column="1" Grid.Row="5" Content="Würfel" Command="{Binding DiceCmd}"/>
             <Label Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3" Content="Gewürfelte Zahl:"/>
             <Label Grid.Column="3" Grid.Row="6" Name="DiceNumber" HorizontalAlignment="Center" Grid.ColumnSpan="3" Content="{Binding DicedNumb}"/>
-            <CheckBox Name="finishStep" Visibility="Hidden"/>
+            <CheckBox Name="finishStep" Visibility="Hidden" IsChecked="{Binding NextPlayer}"/>
             <Grid Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="3" Visibility="{Binding registerVisibility}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
