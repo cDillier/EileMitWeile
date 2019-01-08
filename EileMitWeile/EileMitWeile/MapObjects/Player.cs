@@ -16,6 +16,11 @@ namespace EileMitWeile.MapObjects
         public IMapObject CurrentField { get; set; }
         public Brush PlayerColor => Background;
 
+
+        public Player(Brush playerColor):this(null,null,playerColor)
+        {
+        }
+
         public Player(IMapObject lastFieldBeforeColoredField, IMapObject currentField, Brush playerColor)
         {
             this.LastFieldBeforeColoredField = lastFieldBeforeColoredField;
@@ -28,21 +33,38 @@ namespace EileMitWeile.MapObjects
             CornerRadius = new CornerRadius(1000);
             MouseLeftButtonUp += border_MouseUp;
         }
-       
+
         private void border_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            RemoveFromCurrentField();
-            AddToNextField();
+            var actualInfo = GetActualPlayerColorAndDiceNumber();
+            if (actualInfo.Item1 == this.PlayerColor)
+            {
+                MovePlayer(actualInfo.Item2);
+            }
 
         }
 
-        private void RemoveFromCurrentField()
+        private void MovePlayer(int steps)
         {
-            (this.Parent as StackPanel).Children.Remove(this);
+            for (int i = 0; i < steps; i++)
+            {
+                RemoveFromCurrentField(true);
+                AddToNextField();
+            }
+        }
+
+
+        private void RemoveFromCurrentField(bool checkNextField)
+        {
+            if (!(checkNextField && this.CurrentField.NextField == null))
+            {
+                (this.Parent as StackPanel).Children.Remove(this);
+            }
         }
 
         private void AddToNextField()
         {
+
             if (CurrentField.NextField != null)
             {
                 switch (CurrentField.NextField.FieldType)
@@ -62,6 +84,37 @@ namespace EileMitWeile.MapObjects
                 }
                 CurrentField = CurrentField.NextField;
             }
+        }
+
+        private (Brush, int) GetActualPlayerColorAndDiceNumber()
+        {
+            var grid = new Grid();
+            var diceNo = new Label();
+            var currentColor = new TextBox();
+            int diceNumber = 0;
+            FrameworkElement currentField = this;
+
+            while (currentField.Parent != null && currentField.Name != "BaseGrid")
+            {
+                currentField = currentField.Parent as FrameworkElement;
+            }
+            if (currentField.Name == "BaseGrid")
+            {
+                grid = ((currentField as Grid).Children[0] as Grid);
+                diceNo = grid.Children[5] as Label;
+                currentColor = grid.Children[2] as TextBox;
+
+            }
+            if (diceNo != null && diceNo.Name == "DiceNumber")
+            {
+                diceNumber = Convert.ToInt32(diceNo.Content);
+            }
+
+            if (currentColor != null && currentColor.Name == "actColor")
+            {
+                return (currentColor.Background, diceNumber);
+            }
+            return (null, diceNumber);
         }
     }
 }

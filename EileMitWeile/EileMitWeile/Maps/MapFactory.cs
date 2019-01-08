@@ -9,13 +9,13 @@ namespace EileMitWeile.Maps
 {
     static class MapFactory
     {
-        public static UIElement GetMap(Enum.MapName map)
+        public static IMap GetMap(Enum.MapName map)
         {
             switch (map)
             {
-                case Enum.MapName.FourPlayerMap: return new FourPlayerMap().CreateMap();
+                case Enum.MapName.FourPlayerMap: return new FourPlayerMap();
                 default:
-                    return new FourPlayerMap().CreateMap();
+                    return new FourPlayerMap();
             }
         }
     }

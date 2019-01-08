@@ -11,6 +11,7 @@ namespace EileMitWeile.Maps
     interface IMap
     {
         UIElement CreateMap();
+
         void SendPlayerToBase(Player player);
     }
 }

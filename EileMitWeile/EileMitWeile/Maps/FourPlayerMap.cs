@@ -68,10 +68,10 @@ namespace EileMitWeile.Maps
             Grid.SetRowSpan(yellowUniGrid, 2);
 
             //Alle Base erstellen
-            redBase = new Base(Brushes.Red.Color, fields[38], 180, fields[33]);
-            blueBase = new Base(Brushes.Blue.Color, fields[21], 270, fields[16]);
-            greenBase = new Base(Brushes.Green.Color, fields[55], 90, fields[50]);
-            yellowBase = new Base(Brushes.Yellow.Color, fields[62], 0, fields[67]);
+            redBase = CreateBase(Brushes.Red.Color, fields[38], 180, fields[33]);
+            blueBase = CreateBase(Brushes.Blue.Color, fields[21], 270, fields[16]);
+            greenBase = CreateBase(Brushes.Green.Color, fields[55], 90, fields[50]);
+            yellowBase = CreateBase(Brushes.Yellow.Color, fields[62], 0, fields[67]);
 
             //Base zuweisen
             Grid.SetColumn(redBase, 0);
@@ -92,7 +92,7 @@ namespace EileMitWeile.Maps
             mapGrid.Children.Add(blueBase);
             mapGrid.Children.Add(greenBase);
             mapGrid.Children.Add(yellowBase);
-            SendPlayerToBase(new Player(null, null, Brushes.Red));
+           
             return mapGrid;
         }
 
@@ -106,7 +106,7 @@ namespace EileMitWeile.Maps
 
         private void AddPlayerToBase(Player player, Base startBase)
         {
-            if (player.PlayerColor == startBase.FieldColor)
+            if (player.PlayerColor.ToString() == ((GradientBrush)startBase.FieldColor).GradientStops[1].Color.ToString())
             {
                 (startBase.Child as StackPanel).Children.Add(player);
                 player.CurrentField = startBase;
@@ -140,10 +140,6 @@ namespace EileMitWeile.Maps
             fields[0].NextField = fields[1];
             fields[maxFieldNumber - 1].NextField = fields[0];
             fields[0].PrevField = fields[maxFieldNumber - 1];
-
-
-            //Test
-            (fields[0].Children[0] as StackPanel).Children.Add(new Player(fields[38], fields[0], Brushes.Red));
 
             //Erstellt alle Safe-Zones (Bänke)
             foreach (int index in new List<int>() { 11, 16, 21, 28, 33, 38, 45, 50, 55, 62, 67 })

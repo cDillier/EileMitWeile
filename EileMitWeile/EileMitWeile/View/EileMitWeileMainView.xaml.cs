@@ -28,7 +28,17 @@ namespace EileMitWeile.View
             InitializeComponent();
 
             this.DataContext = new ViewModel.EileMitWeileMainViewModel();
-            mapGrid.Children.Add(MapFactory.GetMap(Enum.MapName.FourPlayerMap));
+            var map = MapFactory.GetMap(Enum.MapName.FourPlayerMap);
+            mapGrid.Children.Add(map.CreateMap());
+            map.SendPlayerToBase(new Player(Brushes.Red));
+            map.SendPlayerToBase(new Player(Brushes.Red));
+            map.SendPlayerToBase(new Player(Brushes.Red));
+            map.SendPlayerToBase(new Player(Brushes.Red));
+
+            map.SendPlayerToBase(new Player(Brushes.Blue));
+            map.SendPlayerToBase(new Player(Brushes.Blue));
+            map.SendPlayerToBase(new Player(Brushes.Blue));
+            map.SendPlayerToBase(new Player(Brushes.Blue));
             //mapGrid.Children.Add(new Player(null, null, Brushes.Red.Color));
 
         }

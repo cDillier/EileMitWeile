@@ -23,6 +23,13 @@ public class MapCreater
         return field;
     }
 
+    protected Base CreateBase(Color teamColor, Field fieldNext,double rotation,Field lastFieldBeforeColoredField)
+    {
+        var base_ = new Base(teamColor, fieldNext, rotation, lastFieldBeforeColoredField);
+        base_.Child = new StackPanel() { VerticalAlignment = VerticalAlignment.Center, HorizontalAlignment = HorizontalAlignment.Center, LayoutTransform = new RotateTransform(45) };
+        return base_;
+    }
+
     protected void SetFieldColorAndFieldType(Field field, Brush fieldColor,FieldType fieldType )
     {
         field.Background = fieldColor;
