@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EileMitWeile.MapObjects;
+using EileMitWeile.Maps;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -147,6 +149,25 @@ namespace EileMitWeile.ViewModel
         private void StartGame()
         {
             registerVisibility = Visibility.Hidden;
+
+            var map = MapFactory.GetMap(Enum.MapName.FourPlayerMap);
+            map.CreateMap();
+            map.SendPlayerToBase(new Player(Brushes.Red));
+            map.SendPlayerToBase(new Player(Brushes.Red));
+            map.SendPlayerToBase(new Player(Brushes.Red));
+            map.SendPlayerToBase(new Player(Brushes.Red));
+
+            map.SendPlayerToBase(new Player(Brushes.Blue));
+            map.SendPlayerToBase(new Player(Brushes.Blue));
+            map.SendPlayerToBase(new Player(Brushes.Blue));
+            map.SendPlayerToBase(new Player(Brushes.Blue));
+
+            map.SendPlayerToBase(new Player(Brushes.Yellow));
+            map.SendPlayerToBase(new Player(Brushes.Yellow));
+            map.SendPlayerToBase(new Player(Brushes.Yellow));
+            map.SendPlayerToBase(new Player(Brushes.Yellow));
+
+
 
             ActColour = Brushes.Red;
             ActSpieler = RotName;

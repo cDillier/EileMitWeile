@@ -42,15 +42,18 @@ namespace EileMitWeile.MapObjects
                 MovePlayer(actualInfo.Item2);
             }
 
-            FinishStep();
+            FinishStep(actualInfo.Item2);
         }
 
         private void MovePlayer(int steps)
         {
-            for (int i = 0; i < steps; i++)
+            if ((this.CurrentField.FieldType == Enum.FieldType.Base && steps == 5) || (this.CurrentField.FieldType != Enum.FieldType.Base))
             {
-                RemoveFromCurrentField(true);
-                AddToNextField();
+                for (int i = 0; i < steps; i++)
+                {
+                    RemoveFromCurrentField(true);
+                    AddToNextField();
+                }
             }
         }
 
@@ -117,20 +120,23 @@ namespace EileMitWeile.MapObjects
             return (null, diceNumber);
         }
 
-        private void FinishStep()
+        private void FinishStep(int diceNumber)
         {
-            var grid = new Grid();
-            var checkBox = new CheckBox();
-            FrameworkElement currentField = this;
-            while (currentField.Parent != null && currentField.Name != "BaseGrid")
+            if ((this.CurrentField.FieldType == Enum.FieldType.Base && diceNumber == 5 )||( this.CurrentField.FieldType != Enum.FieldType.Base))
             {
-                currentField = currentField.Parent as FrameworkElement;
-            }
-            if (currentField.Name == "BaseGrid")
-            {
-                grid = ((currentField as Grid).Children[0] as Grid);
-                checkBox = grid.Children[6] as CheckBox;
-                checkBox.IsChecked = true;
+                var grid = new Grid();
+                var checkBox = new CheckBox();
+                FrameworkElement currentField = this;
+                while (currentField.Parent != null && currentField.Name != "BaseGrid")
+                {
+                    currentField = currentField.Parent as FrameworkElement;
+                }
+                if (currentField.Name == "BaseGrid")
+                {
+                    grid = ((currentField as Grid).Children[0] as Grid);
+                    checkBox = grid.Children[6] as CheckBox;
+                    checkBox.IsChecked = true;
+                } 
             }
 
         }

@@ -30,21 +30,6 @@ namespace EileMitWeile.View
             this.DataContext = new ViewModel.EileMitWeileMainViewModel();
             var map = MapFactory.GetMap(Enum.MapName.FourPlayerMap);
             mapGrid.Children.Add(map.CreateMap());
-            map.SendPlayerToBase(new Player(Brushes.Red));
-            map.SendPlayerToBase(new Player(Brushes.Red));
-            map.SendPlayerToBase(new Player(Brushes.Red));
-            map.SendPlayerToBase(new Player(Brushes.Red));
-
-            map.SendPlayerToBase(new Player(Brushes.Blue));
-            map.SendPlayerToBase(new Player(Brushes.Blue));
-            map.SendPlayerToBase(new Player(Brushes.Blue));
-            map.SendPlayerToBase(new Player(Brushes.Blue));
-
-            map.SendPlayerToBase(new Player(Brushes.Yellow));
-            map.SendPlayerToBase(new Player(Brushes.Yellow));
-            map.SendPlayerToBase(new Player(Brushes.Yellow));
-            map.SendPlayerToBase(new Player(Brushes.Yellow));
-
             //mapGrid.Children.Add(new Player(null, null, Brushes.Red.Color));
 
         }
