@@ -151,7 +151,6 @@ namespace EileMitWeile.ViewModel
             registerVisibility = Visibility.Hidden;
 
             var map = MapFactory.GetMap(Enum.MapName.FourPlayerMap);
-            map.CreateMap();
             map.SendPlayerToBase(new Player(Brushes.Red));
             map.SendPlayerToBase(new Player(Brushes.Red));
             map.SendPlayerToBase(new Player(Brushes.Red));

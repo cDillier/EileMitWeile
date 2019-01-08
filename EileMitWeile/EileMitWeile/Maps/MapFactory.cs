@@ -13,9 +13,9 @@ namespace EileMitWeile.Maps
         {
             switch (map)
             {
-                case Enum.MapName.FourPlayerMap: return new FourPlayerMap();
+                case Enum.MapName.FourPlayerMap: return FourPlayerMap.GetFourPlayerMap();
                 default:
-                    return new FourPlayerMap();
+                    return FourPlayerMap.GetFourPlayerMap();
             }
         }
     }

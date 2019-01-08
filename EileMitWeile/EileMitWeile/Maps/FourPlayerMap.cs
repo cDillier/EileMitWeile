@@ -15,6 +15,19 @@ namespace EileMitWeile.Maps
 {
     public class FourPlayerMap : MapCreater, IMap
     {
+        //Singleton
+        private FourPlayerMap()
+        {
+
+        }
+
+        private static readonly FourPlayerMap fourPlayerMap_ = new FourPlayerMap();
+        public static FourPlayerMap GetFourPlayerMap()
+        {
+            return fourPlayerMap_;
+        }
+
+
         //Anzahl normale Felder mit Bänken
         const int maxFieldNumber = 68;
 
