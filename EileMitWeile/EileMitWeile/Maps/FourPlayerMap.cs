@@ -41,6 +41,10 @@ namespace EileMitWeile.Maps
         {
             //Felder erstellen
             CreateFields();
+            //Ziel-Feld erstellen
+            var finish = CreateField(-1,Brushes.Transparent, FieldType.Finish, null, null);
+            
+
             var yellowUniGrid = CreateUniformGrid(new List<int>() { 60, 75, 8, 61, 74, 7, 62, 73, 6, 63, 72, 5, 64, 71, 4, 65, 70, 3, 66, 69, 2, 67, 68, 1 }, 0);
             var blueUniGrid = CreateUniformGrid(new List<int>() { 9, 82, 25, 10, 81, 24, 11, 80, 23, 12, 79, 22, 13, 78, 21, 14, 77, 20, 15, 76, 19, 16, 17, 18, }, 270);
             var redUniGrid = CreateUniformGrid(new List<int>() { 26, 89, 42, 27, 88, 41, 28, 87, 40, 29, 86, 39, 30, 85, 38, 31, 84, 37, 32, 83, 36, 33, 34, 35, }, 180);
@@ -84,7 +88,7 @@ namespace EileMitWeile.Maps
             redBase = CreateBase(Brushes.Red.Color, fields[38], 180, fields[33], fields[82]);
             blueBase = CreateBase(Brushes.Blue.Color, fields[21], 270, fields[16], fields[75]);
             greenBase = CreateBase(Brushes.Green.Color, fields[55], 90, fields[50], fields[89]);
-            yellowBase = CreateBase(Brushes.Yellow.Color, fields[62], 0, fields[67], fields[68]); 
+            yellowBase = CreateBase(Brushes.Yellow.Color, fields[4], 0, fields[67], fields[68]); 
 
             //Base zuweisen
             Grid.SetColumn(redBase, 0);
@@ -96,6 +100,16 @@ namespace EileMitWeile.Maps
             Grid.SetColumn(yellowBase, 4);
             Grid.SetRow(yellowBase, 4);
 
+            //Ziel den letzten Feldern hinzufügen 
+            fields[74].NextField = finish;
+            fields[81].NextField = finish;
+            fields[88].NextField = finish;
+            fields[95].NextField = finish;
+
+            //Ziel zuweisen
+            Grid.SetColumn(finish, 2);
+            Grid.SetRow(finish, 2);
+
             //Erstellte Elemente dem Grid hinzufügen
             mapGrid.Children.Add(greenUniGrid);
             mapGrid.Children.Add(yellowUniGrid);
@@ -105,7 +119,7 @@ namespace EileMitWeile.Maps
             mapGrid.Children.Add(blueBase);
             mapGrid.Children.Add(greenBase);
             mapGrid.Children.Add(yellowBase);
-           
+            mapGrid.Children.Add(finish);
             return mapGrid;
         }
 
@@ -124,6 +138,7 @@ namespace EileMitWeile.Maps
                 (startBase.Child as StackPanel).Children.Add(player);
                 player.CurrentField = startBase;
                 player.LastFieldBeforeColoredField = startBase.LastFieldBeforeColoredField;
+                player.FirstColoredField = startBase.FirstColoredField;
             }
 
         }
@@ -170,16 +185,16 @@ namespace EileMitWeile.Maps
             foreach (var fieldColor in new List<Brush>() { Brushes.Yellow, Brushes.Blue, Brushes.Red, Brushes.Green })
             {
                 int startIndex = fields.Count();
-                for (int i = 1; i < 7; i++)
+                for (int i = 1; i < 8; i++)
                 {
                     fields.Add(CreateField(-1, fieldColor, FieldType.Normal, null, null));
                 }
-                //Ziel-Feld hinzufügen
-                fields.Add(CreateField(-1, fieldColor, FieldType.Finish, fields[startIndex + 5], null));
-                for (int i = startIndex + 1; i < startIndex + 5; i++)
+                
+                for (int i = startIndex - 1; i < startIndex + 6; i++)
                 {
                     SetPrevAndNextFieldByCurrentFieldIndex(i);
                 }
+
             }
             foreach (int index in new List<int>() { 16, 33, 50 })
             {

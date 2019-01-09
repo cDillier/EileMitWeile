@@ -11,10 +11,10 @@ using System.Windows.Media;
 
 namespace EileMitWeile.ViewModel
 {
-	public class EileMitWeileMainViewModel : ViewModelBase
-	{
+    public class EileMitWeileMainViewModel : ViewModelBase
+    {
         Model.EileMitWeileMainModel model;
-        
+
         public EileMitWeileMainViewModel()
         {
             this.model = new Model.EileMitWeileMainModel();
@@ -33,7 +33,7 @@ namespace EileMitWeile.ViewModel
         {
             get { return _dicedNumb; }
             set { SetProperty(ref _dicedNumb, value); }
-        }        
+        }
 
         private Brush _actColor;
         public Brush ActColour
@@ -151,25 +151,36 @@ namespace EileMitWeile.ViewModel
             registerVisibility = Visibility.Hidden;
 
             var map = MapFactory.GetMap(Enum.MapName.FourPlayerMap);
-            map.SendPlayerToBase(new Player(Brushes.Red));
-            map.SendPlayerToBase(new Player(Brushes.Red));
-            map.SendPlayerToBase(new Player(Brushes.Red));
-            map.SendPlayerToBase(new Player(Brushes.Red));
 
-            map.SendPlayerToBase(new Player(Brushes.Blue));
-            map.SendPlayerToBase(new Player(Brushes.Blue));
-            map.SendPlayerToBase(new Player(Brushes.Blue));
-            map.SendPlayerToBase(new Player(Brushes.Blue));
-
-            map.SendPlayerToBase(new Player(Brushes.Yellow));
-            map.SendPlayerToBase(new Player(Brushes.Yellow));
-            map.SendPlayerToBase(new Player(Brushes.Yellow));
-            map.SendPlayerToBase(new Player(Brushes.Yellow));
+            if (BlauChecked)
+            {
+                AddPlayers(map, 4, Brushes.Blue);
+            }
+            if (GelbChecked)
+            {
+                AddPlayers(map, 4, Brushes.Yellow);
+            }
+            if (GrünChecked)
+            {
+                AddPlayers(map, 4, Brushes.Green);
+            }
+            if (RotChecked)
+            {
+                AddPlayers(map, 4, Brushes.Red);
+            }
 
 
 
             ActColour = Brushes.Red;
             ActSpieler = RotName;
+        }
+
+        private void AddPlayers(IMap map, int amount, Brush color)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                map.SendPlayerToBase(new Player(color));
+            }
         }
 
         private void Dice()
@@ -179,25 +190,29 @@ namespace EileMitWeile.ViewModel
 
         private void SetNextPlayer()
         {
-            if (Color.Equals(ActColour, Brushes.Red) && RotChecked)
+            if (Color.Equals(ActColour, Brushes.Red))
             {
                 ActColour = Brushes.Blue;
                 ActSpieler = BlauName;
+                if (!BlauChecked) SetNextPlayer();
             }
-            else if (Color.Equals(ActColour, Brushes.Blue) && BlauChecked)
-            {
-                ActColour = Brushes.Green;
-                ActSpieler = GrünName;
-            }
-            else if (Color.Equals(ActColour, Brushes.Yellow) && GrünChecked)
-            {
-                ActColour = Brushes.Red;
-                ActSpieler = RotName;
-            }
-            else if (Color.Equals(ActColour, Brushes.Green) && GrünChecked)
+            else if (Color.Equals(ActColour, Brushes.Blue))
             {
                 ActColour = Brushes.Yellow;
                 ActSpieler = GelbName;
+                if (!GelbChecked) SetNextPlayer();
+            }
+            else if (Color.Equals(ActColour, Brushes.Yellow))
+            {
+                ActColour = Brushes.Green;
+                ActSpieler = GrünName;
+                if (!GrünChecked) SetNextPlayer();
+            }
+            else if (Color.Equals(ActColour, Brushes.Green))
+            {
+                ActColour = Brushes.Red;
+                ActSpieler = RotName;
+                if (!RotChecked) SetNextPlayer();
             }
         }
     }

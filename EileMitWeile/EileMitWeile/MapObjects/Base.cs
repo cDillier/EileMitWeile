@@ -20,6 +20,7 @@ namespace EileMitWeile.MapObjects
             BorderBrush = new LinearGradientBrush(new GradientStopCollection() { new GradientStop(Brushes.Black.Color, 0), new GradientStop(teamColor, 0.5) }, new Point(0.5, 1), new Point(0.5, 0));
             LayoutTransform = new RotateTransform(rotation);
             LastFieldBeforeColoredField = lastFieldBeforeColoredField;
+            FirstColoredField = firstColoredField;
         }
 
         public FieldType FieldType { get; } = FieldType.Base;
@@ -33,5 +34,7 @@ namespace EileMitWeile.MapObjects
         public UIElement CurrentField => this;
 
         public Field LastFieldBeforeColoredField { get; }
+
+        public Field FirstColoredField { get; }
     }
 }

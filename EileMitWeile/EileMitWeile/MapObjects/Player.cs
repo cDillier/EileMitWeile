@@ -12,18 +12,21 @@ namespace EileMitWeile.MapObjects
 {
     public class Player : Border
     {
+        
+        public IMapObject FirstColoredField { get; set; }
         public IMapObject LastFieldBeforeColoredField { get; set; }
         public IMapObject CurrentField { get; set; }
         public Brush PlayerColor => Background;
 
 
-        public Player(Brush playerColor):this(null,null,playerColor)
+        public Player(Brush playerColor):this(null,null,null,playerColor)
         {
         }
 
-        public Player(IMapObject lastFieldBeforeColoredField, IMapObject currentField, Brush playerColor)
+        public Player(IMapObject lastFieldBeforeColoredField,IMapObject firstColoredField, IMapObject currentField, Brush playerColor)
         {
             this.LastFieldBeforeColoredField = lastFieldBeforeColoredField;
+            this.FirstColoredField = firstColoredField;
             this.CurrentField = currentField;
             Width = 15;
             Height = 15;
@@ -37,22 +40,28 @@ namespace EileMitWeile.MapObjects
         private void border_MouseUp(object sender, MouseButtonEventArgs e)
         {
             var actualInfo = GetActualPlayerColorAndDiceNumber();
-            if (actualInfo.Item1 == this.PlayerColor)
+            if (actualInfo.Item1 == this.PlayerColor && this.CurrentField.FieldType != Enum.FieldType.Finish)
             {
                 MovePlayer(actualInfo.Item2);
+                FinishStep(actualInfo.Item2);
             }
-
-            FinishStep(actualInfo.Item2);
         }
 
         private void MovePlayer(int steps)
         {
-            if ((this.CurrentField.FieldType == Enum.FieldType.Base && steps == 5) || (this.CurrentField.FieldType != Enum.FieldType.Base))
+            if ((this.CurrentField.FieldType == Enum.FieldType.Base && steps == 5))
             {
+                RemoveFromCurrentField(true);
+                AddToNextField();
+            }
+
+            else if(this.CurrentField.FieldType != Enum.FieldType.Base)
+            {
+                
                 for (int i = 0; i < steps; i++)
                 {
                     RemoveFromCurrentField(true);
-                    AddToNextField();
+                    steps = i+ AddToNextField(steps - i);
                 }
             }
         }
@@ -66,8 +75,25 @@ namespace EileMitWeile.MapObjects
             }
         }
 
+        private int AddToNextField(int remainingSteps)
+        {
+            if (remainingSteps > 0 && this.CurrentField.FieldNumber == LastFieldBeforeColoredField.FieldNumber)
+            {
+                this.CurrentField = FirstColoredField;
+                (CurrentField.NextField.PrevField.Children[0] as StackPanel).Children.Add(this);
+                remainingSteps--;
+            }
+            else
+            {
+                AddToNextField();
+            }
+            //Übergibt die restlichen Steps
+            return remainingSteps;
+        }
+
         private void AddToNextField()
         {
+            
             if (CurrentField.NextField != null)
             {
                 switch (CurrentField.NextField.FieldType)
