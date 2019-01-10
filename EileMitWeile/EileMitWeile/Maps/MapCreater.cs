@@ -19,7 +19,7 @@ public class MapCreater
         var stackPanel = new StackPanel() { Orientation = Orientation.Horizontal };
         if (fieldType == FieldType.Finish)
         {
-            stackPanel = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center, HorizontalAlignment = HorizontalAlignment.Center }
+            stackPanel = new StackPanel { Orientation = Orientation.Horizontal, VerticalAlignment = VerticalAlignment.Center, HorizontalAlignment = HorizontalAlignment.Center };
         }
         stackPanel.Children.Add(label);
         //field.Children.Add(label);
